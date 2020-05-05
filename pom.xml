@@ -51,6 +51,16 @@
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
           <version>3.0.2</version>
+          <configuration>
+            <goal>jar:inplace</goal>
+            <archive>
+              <manifest>
+                <mainClass>
+                  org.norns.App
+                </mainClass>
+              </manifest>
+            </archive>
+          </configuration>
         </plugin>
         <plugin>
           <artifactId>maven-install-plugin</artifactId>
