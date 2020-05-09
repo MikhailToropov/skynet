@@ -6,12 +6,14 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException;
 
 public class Listener {
+    public Listener(){
+        System.out.println("New listener was created");
+    }
 
     public SendMessage incom(Message update){
-        String mess = update.getText();
         SendMessage newMessage = new SendMessage();
-        if(mess.startsWith("/")){
-            switch (mess.split(" ")[0]){
+        if (update.isCommand()){
+            switch (update.getText().split(" ")[0]){
                 case ("/start"):{
                     newMessage.setText("Hello, new User!");
                 }

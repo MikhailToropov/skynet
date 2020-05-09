@@ -56,15 +56,28 @@
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
           <version>3.0.2</version>
+<!--          <executions>-->
+<!--            <execution>-->
+<!--              <phase>package</phase>-->
+<!--              <goals>-->
+<!--                <goal>jar</goal>-->
+<!--              </goals>-->
+<!--            </execution>-->
+<!--          </executions>-->
           <configuration>
-            <goal>jar:inplace</goal>
+<!--            <goal>jar:inplace</goal>-->
+            <includes>
+              <include>org.telegram</include>
+            </includes>
             <archive>
               <manifest>
                 <mainClass>
                   org.norns.App
                 </mainClass>
               </manifest>
+
             </archive>
+
           </configuration>
         </plugin>
         <plugin>
@@ -83,6 +96,25 @@
         <plugin>
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.0.0</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <executions>
+            <execution>
+              <phase>package</phase>
+              <goals>
+                <goal>single</goal>
+              </goals>
+            </execution>
+          </executions>
+          <configuration>
+            <archive>
+              <manifest>
+                <mainClass>org.norns.App</mainClass>
+              </manifest>
+            </archive>
+          </configuration>
         </plugin>
       </plugins>
     </pluginManagement>
